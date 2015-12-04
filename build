@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 'Google Inc.:Google APIs:23'
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.intervalworld.android"
+        minSdkVersion 11
+        targetSdkVersion 23
+    }
+
+    lintOptions {
+
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    signingConfigs {
+        release{
+            storeFile file("fileA/abc.keystore")
+            storePassword "123456"
+            keyAlias "androidresortdirectorty"
+            keyPassword "Ntrvl12#"
+        }
+    }
+
+    productFlavors {
+        qa {
+            versionName verName
+            versionCode Integer.parseInt(verCode)
+        }
+
+    }
+
+    buildTypes {
+//        debug {
+//            applicationIdSuffix ".debug"
+//            debuggable true
+//        }
+        release {
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "2g"
+        jumboMode = true
+    }
+
+
+}
+
+dependencies {
+    compile ('com.facebook.android:facebook-android-sdk:4.5.0'){
+        exclude module: 'bolts-android'
+        exclude module: 'support-v4'
+    }
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.google.android.gms:play-services-location:8.3.0'
+    compile 'com.google.android.gms:play-services-maps:8.3.0'
+    compile files('src/main/libs/adobeMobileLibrary.jar')
+    compile files('src/main/libs/bolts-android-1.2.1.jar')
+    compile files('src/main/libs/brightcove-android-sdk.jar')
+    compile files('src/main/libs/universal-image-loader-1.9.4.jar')
+}
