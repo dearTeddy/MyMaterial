@@ -1,0 +1,22 @@
+在/drawble文件夹下新建文件：
+
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="oval">
+            <solid android:color="#FF0000" />
+            <size android:width="60dp"
+                android:height="60dp" />
+        </shape>
+    </item>
+    <item android:state_selected="false">
+        <shape android:shape="oval">
+            <solid android:color="#00FF00"/>
+            <size android:width="60dp"
+                android:height="60dp"/>
+        </shape>
+    </item>
+</selector>
+
+
+在xml文件中设置backgroud=“@drawble/selector” 即可
